@@ -354,7 +354,8 @@ header {
 
 .image-article {
 
-    height: 65vh;
+    width: 80vw;
+
 }
 
 .second-cont {
@@ -428,7 +429,11 @@ header {
         float: right;
 
     }
+    .image-article {
 
+        width: auto;
+
+    }
 
     .article {
         width: 100%;
@@ -458,13 +463,13 @@ header {
         height: 100%;
         position: fixed;
         background-color: #e0dfda;
-        z-index: 9;
+        z-index: 10;
         width: 5vw;
         display: block;
     }
     .burgermenu-logo {
         width: 40px;
-        z-index: 7;
+        z-index: 20;
         position: absolute;
         bottom: 50px;
         left: 25%;
