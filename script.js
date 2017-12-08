@@ -4,7 +4,7 @@ let SpanThree = document.querySelector('#nav-icon4 span:nth-child(3)')
 let MenuContainer = document.querySelector('header');
 let NavIndication = document.querySelector('.navindication');
 let MenuItems = document.querySelectorAll("header a");
-
+let ImageLink = document.querySelector('.gird-image-a');
 BurgerMenuIcon.addEventListener('click', OpenMenu);
 
 function OpenMenu() {
@@ -44,6 +44,8 @@ function showArtwork(drawings) {
         clone.querySelector('img').setAttribute("src", drawing._embedded["wp:featuredmedia"][0].media_details.sizes.medium.source_url);
         sectionGrid.appendChild(clone);
     })
+
+
     let Menu = document.querySelector('.menu-left');
 
     document.querySelector('.characters').addEventListener('click', CharactersPage);
@@ -52,7 +54,7 @@ function showArtwork(drawings) {
 
     function CharactersPage(drawings) {
 
-        if (Menu.classList.contains('dark-color')) {
+        if (Menu.classList.contains('dark-bckg')) {
             console.log('its light');
             document.querySelector('.navindication').textContent = 'Characters';
         }
