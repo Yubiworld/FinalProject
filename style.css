@@ -14,6 +14,7 @@ body {
     font-weight: 400;
     line-height: 1.5;
     color: #22283A;
+    overflow-x: hidden;
 }
 
 p {
@@ -71,6 +72,7 @@ small,
     background-color: #22283A;
     z-index: 9;
     width: 5vw;
+    display: none;
 }
 
 .burgermenu-icon {
@@ -234,10 +236,7 @@ header {
 }
 */
 
-/*Desktop*/
-
 .dark-color {
-
     color: #22283A;
 }
 
@@ -261,6 +260,7 @@ header {
     height: 100vh;
     width: 100vw;
     position: relative;
+    overflow-x: hidden;
 
 }
 
@@ -277,22 +277,15 @@ header {
     z-index: 2;
 }
 
-.second-cont {
+.grid-cont {
     background-color: #22283A;
-    width: 85vw;
+    width: 95vw;
     position: absolute;
     height: auto;
     float: right;
-
 }
 
-.text-subcontainer {
-    display: flex;
-    align-self: center;
-    flex-direction: column;
-    z-index: 3;
-    color: white;
-}
+
 
 
 
@@ -349,10 +342,51 @@ header {
 
 }
 
-.superimage {
-    width: 100%;
-    height: auto;
+.nannavallentin {
+    position: fixed;
+    width: 7px;
+    top: 40px;
+    right: 40px;
+    z-index: 50;
 }
+
+/*                Single Image Page                  */
+
+.image-article {
+
+    height: 65vh;
+}
+
+.second-cont {
+    background-color: #22283A;
+    width: 90%;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    position: absolute;
+    height: 100%;
+    right: 0;
+    display: flex;
+}
+
+.text-subcontainer {}
+
+.single-image {
+    width: auto;
+    height: 60vh;
+}
+
+.single-image-section {
+    width: 100vw;
+}
+
+.text-subcontainer {
+    display: flex;
+    align-self: flex-start;
+    flex-direction: column;
+    z-index: 3;
+    color: white;
+}
+
 
 /***********************/
 
@@ -386,14 +420,23 @@ header {
         background-color: #22283A;
 
     }
+    .grid-cont {
+        background-color: #22283A;
+        width: 85vw;
+        position: absolute;
+        height: auto;
+        float: right;
+
+    }
+
 
     .article {
         width: 100%;
         height: auto;
     }
 
-    .superimage {
-        width: 100%;
+    .single-image {
+        width: 65%;
         height: auto;
     }
 
@@ -417,6 +460,7 @@ header {
         background-color: #e0dfda;
         z-index: 9;
         width: 5vw;
+        display: block;
     }
     .burgermenu-logo {
         width: 40px;
@@ -442,9 +486,44 @@ header {
         background: #22283a;
     }
     .nannavallentin {
-        position: absolute;
+        position: fixed;
         width: 7px;
         top: 40px;
         right: 40px;
+        z-index: 50;
+    }
+    .single-image-section {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        position: absolute;
+        z-index: 3
+    }
+    .first-cont {
+        width: 50%;
+        height: 100vh;
+        background-color: #E0DFDA;
+        z-index: 1;
+        top: 0;
+        position: absolute;
+    }
+    .second-cont {
+        background-color: #22283A;
+        width: 30%;
+        padding-left: 10vw;
+        padding-right: 2vw;
+        position: absolute;
+        height: 100%;
+        right: 0;
+        display: flex;
+    }
+
+
+    .text-subcontainer {
+        display: flex;
+        align-self: center;
+        flex-direction: column;
+        z-index: 3;
+        color: white;
     }
 }
