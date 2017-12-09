@@ -6,8 +6,11 @@ let NavIndication = document.querySelector('.navindication');
 let MenuItems = document.querySelectorAll("header a");
 let ImageLink = document.querySelector('.grid-section');
 BurgerMenuIcon.addEventListener('click', OpenMenu);
-let Modal = document.querySelector('.modal');
 
+let Modal = document.querySelector('.modal');
+Modal.addEventListener('click',function(){
+    Modal.classList.add('hide');
+});
 
 
 
@@ -83,13 +86,10 @@ function showArtwork(drawings) {
 
             console.log(singleevent);
             Modal.classList.add('modal-show');
-            let SingleImageSection = document.querySelector('.single-image-section');
-            let SingleTextSection = document.querySelector('.single-text-section');
-            let SingleImageTemplate = document.querySelector('.single-image-template');
-            let SingleTextTemplate = document.querySelector('.single-text-template').content;
-            let clonetext = SingleImageTemplate.cloneNode(true);
-            let cloneimage = SingleTextTemplate.cloneNode(true);
-            cloneimage.querySelector('img').setAttribute('src', singleevent._embedded["wp:featuredmedia"][0].media_details.sizes.medium.source_url);
+
+            Modal.querySelector(".modal-image").setAttribute('src', singleevent._embedded["wp:featuredmedia"][0].media_details.sizes.medium.source_url);
+
+            Modal.classList.remove('hide');
         }
 
 

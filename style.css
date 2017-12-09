@@ -2,6 +2,7 @@
     margin: 0;
 }
 
+
 /*TYPOGRAPHY*/
 
 html {
@@ -56,6 +57,7 @@ small,
 
 /*                                  NAVIGATION                          */
 
+
 /*                  LEFT SIDEBAR NAVIGATION                 */
 
 .menu a {
@@ -65,7 +67,6 @@ small,
     padding-left: 30px;
     transition: opacity .120s ease-in-out;
 }
-
 
 .menu-left {
     height: 100%;
@@ -107,6 +108,7 @@ small,
     display: none;
 }
 
+
 /*                    NAVIGATION CONTENT                    */
 
 header {
@@ -124,7 +126,6 @@ header {
 .menu {
     display: flex;
     flex-direction: column;
-
 }
 
 .appear {
@@ -136,6 +137,7 @@ header {
     opacity: 0 !important;
 }
 
+
 /*                                  Burger Menu Icon                    */
 
 #nav-icon4 {
@@ -145,7 +147,6 @@ header {
     transition: .5s ease-in-out;
     cursor: pointer;
     z-index: 20;
-
 }
 
 #nav-icon4 span {
@@ -195,7 +196,9 @@ header {
     left: 8px;
 }
 
+
 /************                                   *************/
+
 
 /*
 .drawingart {
@@ -255,7 +258,6 @@ header {
     width: 100vw;
     position: relative;
     overflow-x: hidden;
-
 }
 
 .first-cont {}
@@ -279,10 +281,6 @@ header {
     float: right;
 }
 
-
-
-
-
 .facebook {
     /*
     height: 36px;
@@ -294,7 +292,6 @@ header {
     color: #E0DFDA;
 */
     display: none;
-
 }
 
 .instagram {
@@ -309,13 +306,10 @@ header {
     display: none;
 }
 
-
-
 .rightarrow {
     width: 50px;
     height: auto;
     z-index: 8;
-
 }
 
 .grid-section {
@@ -333,7 +327,6 @@ header {
     width: 90%;
     height: auto;
     position: relative;
-
 }
 
 .nannavallentin {
@@ -344,12 +337,11 @@ header {
     z-index: 50;
 }
 
+
 /*                Single Image Page                  */
 
 .image-article {
-
     width: 80vw;
-
 }
 
 .second-cont {
@@ -385,20 +377,19 @@ header {
 
 /***********************/
 
+
 /***********************/
+
 
 /*                       Tablet                                */
 
 @media screen and (min-width: 768px) {
-
-
     .grid-section {}
     .article {
         width: 80%;
     }
-
-
 }
+
 
 /*                         Desktop                                 */
 
@@ -414,7 +405,6 @@ header {
         padding-right: 13.541666666666666VW;
         padding-left: 13.541666666666666VW;
         background-color: #22283A;
-
     }
     .grid-cont {
         background-color: #22283A;
@@ -422,28 +412,22 @@ header {
         position: absolute;
         height: auto;
         float: right;
-
     }
     .image-article {
-
         width: 100%;
         height: 100%;
         display: flex;
         align-items: center;
     }
-
     .article {
         width: 18.75VW;
         height: 18.75VW;
     }
-
     .single-image {
         width: 60.9375VW;
         padding-left: 5.208333333333334VW;
         height: auto;
     }
-
-
     /*                          Desktop Menu                    */
     .menu-icon-container {
         width: 5.208333333333334VW;
@@ -464,7 +448,6 @@ header {
         display: flex;
         align-items: center;
     }
-
     .menu-left {
         height: 100%;
         position: fixed;
@@ -481,7 +464,6 @@ header {
         left: 25%;
         display: block;
     }
-
     .navindication {
         width: 40px;
         opacity: 1;
@@ -528,8 +510,6 @@ header {
         right: 0;
         display: flex;
     }
-
-
     .text-subcontainer {
         display: flex;
         align-self: center;
@@ -548,9 +528,7 @@ header {
         bottom: 1.5625VW;
         color: #E0DFDA;
         display: block;
-
     }
-
     .instagram {
         height: 1.5625VW;
         width: 1.5625VW;
@@ -560,19 +538,31 @@ header {
         color: #E0DFDA;
         display: block;
     }
-
-
-
     /*                                         MODAL                                        */
-    .modal {
-        display: none;
-        width: 94.79166666666666VW;
-        height: 100%;
-        position: fixed;
-        right: 0;
-        z-index: 75;
-    }
     .modal-show {
         display: block;
     }
+}
+
+.modal {
+    position: fixed;
+    z-index: 10;
+    padding-top: 1em;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #7c1f17;
+    width: 80%;
+}
+
+.hide{
+    display: none;
 }
