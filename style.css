@@ -560,4 +560,19 @@ header {
         color: #E0DFDA;
         display: block;
     }
+
+
+
+    /*                                         MODAL                                        */
+    .modal {
+        display: none;
+        width: 94.79166666666666VW;
+        height: 100%;
+        position: fixed;
+        right: 0;
+        z-index: 75;
+    }
+    .modal-show {
+        display: block;
+    }
 }
