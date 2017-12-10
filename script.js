@@ -85,14 +85,10 @@ function showArtwork(drawings) {
 
             RightArrow.addEventListener('click', NextModal);
 
-            var i = 0;
-            for (i; i < drawings.length; i++) {
+            for (i=0; i < drawings.length; i++) {
                 if (singleevent.id == drawings[i].id) {
                     indexvalue = i;
-
-
                 }
-
             }
 
             function NextModal() {
