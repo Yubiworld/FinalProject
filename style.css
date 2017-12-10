@@ -5,7 +5,7 @@
 
 /*TYPOGRAPHY*/
 
-html {
+vw html {
     font-size: 1.25em;
 }
 
@@ -56,7 +56,6 @@ small,
 
 
 /*                                  NAVIGATION                          */
-
 
 /*                  LEFT SIDEBAR NAVIGATION                 */
 
@@ -117,7 +116,7 @@ header {
     background-color: #E0DFDA;
     position: fixed;
     left: -160vw;
-    z-index: 10;
+    z-index: 50;
     transition: transform .5s ease-in-out;
     display: flex;
     align-items: center;
@@ -139,6 +138,17 @@ header {
 
 
 /*                                  Burger Menu Icon                    */
+
+.menu-icon-container {
+    width: 5.208333333333334VW;
+    display: flex;
+    position: fixed;
+    top: 3.125VW;
+    z-index: 25;
+    height: 5.208333333333334VW;
+    justify-content: center;
+    background-color: #22283A;
+}
 
 #nav-icon4 {
     width: 30px;
@@ -198,7 +208,6 @@ header {
 
 
 /************                                   *************/
-
 
 /*
 .drawingart {
@@ -260,7 +269,11 @@ header {
     overflow-x: hidden;
 }
 
-.first-cont {}
+.first-cont {
+    background-image: url(tumblr_n8yj5p3SNH1sotm09o3_540.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 
 .image {
     background-image: url(image.png);
@@ -273,36 +286,29 @@ header {
     z-index: 2;
 }
 
+#image-link {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
 .grid-cont {
     background-color: #22283A;
-    width: 95vw;
+    width: 100vw;
     position: absolute;
     height: auto;
     float: right;
 }
 
 .facebook {
-    /*
-    height: 36px;
-    width: 36px;
-    grid-column: 29;
-    left: 0%;
-    position: absolute;
-    bottom: 30px;
-    color: #E0DFDA;
-*/
+
     display: none;
 }
 
 .instagram {
-    /*
-    height: 36px;
-    width: 36px;
-    right: 0%;
-    position: absolute;
-    bottom: 30px;
-    color: #E0DFDA;
-*/
+
     display: none;
 }
 
@@ -315,7 +321,7 @@ header {
 .grid-section {
     padding-top: 80px;
     display: grid;
-    grid-row-gap: 40px;
+    grid-row-gap: 0;
     grid-template-columns: 1fr;
     padding-right: 5vw;
     width: 100%;
@@ -324,10 +330,12 @@ header {
 
 .article {
     justify-self: center;
-    width: 90%;
-    height: auto;
+    width: 100vw;
+    height: 89.58333333333334VW;
     position: relative;
+    transition: opacity .1s;
 }
+
 
 .nannavallentin {
     position: fixed;
@@ -337,11 +345,78 @@ header {
     z-index: 50;
 }
 
+/*                  MODAL MOBILE                                */
+
+.modal-show {
+    display: block;
+}
+
+
+.modal {
+    position: fixed;
+    z-index: 10;
+    right: 0;
+    top: 0;
+    width: 100vw;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: #22283a;
+}
+
+.modal-content {
+    margin: auto;
+    padding: 20px;
+    width: 80%;
+    position: absolute;
+    z-index: 10;
+    right: 0;
+    top: 100vw;
+    width: 100vw;
+    height: 100%;
+    border-left: 0;
+    box-sizing: border-box;
+}
+
+.hide {
+    display: none;
+}
+
+.modal-image {
+    z-index: 100;
+    width: 100vw;
+    max-height: 89.58333333333334VW;
+    height: 100vh;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: right;
+
+}
+
+.modal-image-cont {
+    padding-top: 11.71875VW;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
 
 /*                Single Image Page                  */
 
-.image-article {
-    width: 80vw;
+.image-articles {
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: brightness(100%);
+    -webkit-transition: -webkit-filter 75ms linear;
+    width: 100vw;
+    height: 89.58333333333334VW;
+    display: flex;
+    align-items: center;
+}
+
+.image-articles:hover {
+    filter: brightness(50%);
+    background-color: black;
+    cursor: pointer;
 }
 
 .second-cont {
@@ -354,8 +429,6 @@ header {
     right: 0;
     display: flex;
 }
-
-.text-subcontainer {}
 
 .single-image {
     width: 60.9375VW;
@@ -377,192 +450,263 @@ header {
 
 /***********************/
 
-
 /***********************/
-
 
 /*                       Tablet                                */
 
 @media screen and (min-width: 768px) {
     .grid-section {}
     .article {
-        width: 80%;
+
+        width: 100vw;
+        height: 89.58333333333334VW;
     }
-}
 
 
-/*                         Desktop                                 */
+    /*                         Desktop                                 */
+    @media screen and (min-width: 1024px) {
+        .grid-section {
+            padding-top: 6.979166666666667VW;
+            display: grid;
+            padding-bottom: 6.979166666666667VW;
+            grid-row-gap: 8.333333333333332VW;
+            grid-template-rows: 18.75VW 18.75VW;
+            grid-column-gap: 8.333333333333332VW;
+            grid-template-columns: repeat(3, 18.75VW);
+            padding-right: 13.541666666666666VW;
+            padding-left: 13.541666666666666VW;
+            background-color: #22283A;
+        }
+        .grid-cont {
+            background-color: #22283A;
+            width: 85vw;
+            position: absolute;
+            height: auto;
+            float: right;
+        }
+        .image-articles {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+        .article {
+            width: 18.75VW;
+            height: 18.75VW;
+        }
+        .single-image {
+            width: 60.9375VW;
+            padding-left: 5.208333333333334VW;
+            height: auto;
+        }
+        /*                          Desktop Menu                    */
+        .menu-icon-container {
+            width: 5.208333333333334VW;
+            background-color: none;
+            display: flex;
+            z-index: 25;
+            justify-content: center;
+            align-content: center;
+            background: none;
+        }
+        header {
+            width: 62VW;
+            height: 100%;
+            background-color: #E0DFDA;
+            position: fixed;
+            z-index: 50;
+            left: -155.208333333333334VW;
 
-@media screen and (min-width: 1024px) {
-    .grid-section {
-        padding-top: 6.979166666666667VW;
-        display: grid;
-        padding-bottom: 6.979166666666667VW;
-        grid-row-gap: 8.333333333333332VW;
-        grid-template-rows: 18.75VW 18.75VW;
-        grid-column-gap: 8.333333333333332VW;
-        grid-template-columns: repeat(3, 18.75VW);
-        padding-right: 13.541666666666666VW;
-        padding-left: 13.541666666666666VW;
-        background-color: #22283A;
-    }
-    .grid-cont {
-        background-color: #22283A;
-        width: 85vw;
-        position: absolute;
-        height: auto;
-        float: right;
-    }
-    .image-article {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-    }
-    .article {
-        width: 18.75VW;
-        height: 18.75VW;
-    }
-    .single-image {
-        width: 60.9375VW;
-        padding-left: 5.208333333333334VW;
-        height: auto;
-    }
-    /*                          Desktop Menu                    */
-    .menu-icon-container {
-        width: 5.208333333333334VW;
-        display: flex;
-        position: fixed;
-        top: 3.125VW;
-        z-index: 25;
-        justify-content: center;
-    }
-    header {
-        width: 62VW;
-        height: 100%;
-        background-color: #E0DFDA;
-        position: fixed;
-        left: -155.208333333333334VW;
-        z-index: 10;
-        transition: transform .5s ease-in-out;
-        display: flex;
-        align-items: center;
-    }
-    .menu-left {
-        height: 100%;
-        position: fixed;
-        background-color: #e0dfda;
-        z-index: 10;
-        width: 5.208333333333334VW;
-        display: block;
-    }
-    .burgermenu-logo {
-        width: 40px;
-        z-index: 20;
-        position: absolute;
-        bottom: 1.5625VW;
-        left: 25%;
-        display: block;
-    }
-    .navindication {
-        width: 40px;
-        opacity: 1;
-        transform: rotate(-90deg);
-        transition: opacity .250s ease-in-out;
-        z-index: 8;
-        position: absolute;
-        top: 50%;
-        left: 25%;
-        display: block;
-    }
-    #nav-icon4 span {
-        background: #22283a;
-    }
-    .nannavallentin {
-        position: fixed;
-        width: 0.7895833333333333VW;
-        top: 1.5625VW;
-        right: 2.604166666666667VW;
-        z-index: 50;
-    }
-    .single-image-section {
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        position: absolute;
-        z-index: 3
-    }
-    .first-cont {
-        width: 56.30208333333333VW;
-        height: 100vh;
-        background-color: #E0DFDA;
-        z-index: 1;
-        top: 0;
-        position: absolute;
-    }
-    .second-cont {
-        background-color: #22283A;
-        width: 47.39583333333333VW;
-        position: absolute;
-        height: 100%;
-        padding-left: 0;
-        padding-right: 0;
-        right: 0;
-        display: flex;
-    }
-    .text-subcontainer {
-        display: flex;
-        align-self: center;
-        flex-direction: column;
-        z-index: 3;
-        padding-left: 20.3125VW;
-        width: 13.541666666666666VW;
-        color: white;
-    }
-    .facebook {
-        height: 1.5625VW;
-        width: 1.5625VW;
-        grid-column: 29;
-        right: 2.604166666666667VW;
-        position: fixed;
-        bottom: 1.5625VW;
-        color: #E0DFDA;
-        display: block;
-    }
-    .instagram {
-        height: 1.5625VW;
-        width: 1.5625VW;
-        right: 6.770833333333333VW;
-        position: fixed;
-        bottom: 1.5625VW;
-        color: #E0DFDA;
-        display: block;
-    }
-    /*                                         MODAL                                        */
-    .modal-show {
-        display: block;
-    }
-}
+            transition: transform .5s ease-in-out;
+            display: flex;
+            align-items: center;
+        }
+        .menu-left {
+            height: 100%;
+            position: fixed;
+            background-color: #e0dfda;
+            z-index: 10;
+            width: 5.208333333333334VW;
+            display: block;
+        }
+        .burgermenu-logo {
+            width: 40px;
+            z-index: 20;
+            position: absolute;
+            bottom: 1.5625VW;
+            left: 25%;
+            display: block;
+        }
+        .navindication {
+            width: 40px;
+            opacity: 1;
+            transform: rotate(-90deg);
+            transition: opacity .250s ease-in-out;
+            z-index: 8;
+            position: absolute;
+            top: 50%;
+            left: 25%;
+            display: block;
+        }
+        #nav-icon4 span {
+            background: #22283a;
+        }
+        .nannavallentin {
+            position: fixed;
+            width: 0.7895833333333333VW;
+            top: 1.5625VW;
+            right: 2.604166666666667VW;
+            z-index: 50;
+        }
+        .single-image-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: absolute;
+            z-index: 3
+        }
+        .first-cont {
+            width: 56.30208333333333VW;
+            left: 5vw;
+            height: 100vh;
+            background-color: #E0DFDA;
+            z-index: 1;
+            top: 0;
+            position: absolute;
+        }
+        .second-cont {
+            background-color: #22283A;
+            width: 47.39583333333333VW;
+            position: absolute;
+            height: 100vh;
+            top: 0;
+            right: 0;
+            display: flex;
+            justify-content: flex-end;
+        }
+        .text-subcontainer {
+            display: flex;
+            align-self: center;
+            flex-direction: column;
+            z-index: 3;
+            width: 13.541666666666666VW;
+            color: white;
+            float: right;
+        }
+        .facebook {
+            height: 1.5625VW;
+            width: 1.5625VW;
+            grid-column: 29;
+            right: 2.604166666666667VW;
+            position: fixed;
+            bottom: 1.5625VW;
+            color: #E0DFDA;
+            display: block;
+        }
+        .instagram {
+            height: 1.5625VW;
+            width: 1.5625VW;
+            right: 6.770833333333333VW;
+            position: fixed;
+            bottom: 1.5625VW;
+            color: #E0DFDA;
+            display: block;
+        }
+        /*                            MODAL DESKTOP                                   */
+        .modal-show {
+            display: block;
+        }
+        .rightarrow {
+            width: 50px;
+            height: auto;
+            z-index: 50;
+            right: 6.565656565656567VW;
+            top: 50%;
+            position: absolute;
+            padding-left: 3.0303030303030303VW;
+            cursor: pointer;
+            transition: width 250ms, filter 250ms;
+            filter: drop-shadow(0px 0px 5px black);
+        }
+        .rightarrow:hover {
+            width: 51px;
+            filter: drop-shadow(0px 0px 10px black);
 
-.modal {
-    position: fixed;
-    z-index: 10;
-    padding-top: 1em;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-}
+        }
+        .modal {
+            position: fixed;
+            z-index: 10;
+            right: 0;
+            top: 0;
+            width: 94.79166666666666VW;
+            height: 100%;
+            box-sizing: border-box;
+            transition: left 50ms ease-in-out;
+        }
 
-.modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #7c1f17;
-    width: 80%;
-}
 
-.hide{
-    display: none;
-}
+        .modal-content {
+            margin: auto;
+            width: 80%;
+            position: ;
+            z-index: 10;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            top: 0;
+            background-color: #22283a;
+            width: 94.79166666666666VW;
+            height: 100%;
+            border-left: 56.30208333333333VW solid #e0dfda;
+            box-sizing: border-box;
+            transition: border-left 250ms ease-in-out;
+        }
+
+
+
+        .hide {
+            display: none;
+        }
+
+        .modal-image {
+            z-index: 100;
+            width: 60.9375VW;
+            max-height: 100vh;
+            height: 100vh;
+            left: 0;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position-x: right;
+            background-position-y: center;
+        }
+
+
+        .modal-image-cont {
+            padding-top: 0;
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            align-items: center;
+
+        }
+        #image-link {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+        /*                                      ABOUT DESKTOP                                */
+        .text-about {
+            display: flex;
+            align-self: center;
+            flex-direction: column;
+            bottom: 25vw;
+            z-index: 3;
+            width: 32.51179863660199VW;
+            color: white;
+            float: right;
+            right: 3.565656565656567VW;
+
+        }
+    }

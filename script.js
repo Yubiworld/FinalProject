@@ -6,26 +6,12 @@ let NavIndication = document.querySelector('.navindication');
 let MenuItems = document.querySelectorAll("header a");
 let ImageLink = document.querySelector('.grid-section');
 BurgerMenuIcon.addEventListener('click', OpenMenu);
-
+let RightArrow = document.querySelector('.rightarrow');
+var indexvalue = 0;
 let Modal = document.querySelector('.modal');
-Modal.addEventListener('click',function(){
+Modal.addEventListener('click', function () {
     Modal.classList.add('hide');
 });
-
-
-
-function showModal(singleevent) {
-
-    console.log('working')
-    Modal.classList.add('modal-show');
-    let SingleImageSection = document.querySelector('.single-image-section');
-    let SingleTextSection = document.querySelector('.single-text-section');
-    let SingleImageTemplate = document.querySelector('.single-image-template');
-    let SingleTextTemplate = document.querySelector('.single-text-template').content;
-    cloneimage.querySelector('.single-image').setAttribute('src', singleevent._embedded["wp:featuredmedia"][0].media_details.sizes.medium.source_url);
-    let clonetext = SingleTextTemplate.cloneNode(true);
-    let cloneimage = SingleImageTemplate.cloneNode(true);
-}
 
 
 
@@ -40,6 +26,7 @@ function OpenMenu() {
     let MenuItems = document.querySelectorAll("header a");
     MenuItems.forEach(function (menus) {
         menus.classList.toggle('fade');
+
     });
 
 }
@@ -57,22 +44,26 @@ function getAllArtwork() {
 
 
 function showArtwork(drawings) {
-    console.log(drawings);
     let sectionGrid = document.querySelector('#section-grid');
     let GridImageTemplate = document.querySelector('#grid-img-template').content;
 
     drawings.forEach(function (drawing) {
         let clone = GridImageTemplate.cloneNode(true);
-        clone.querySelector('img').setAttribute("src", drawing._embedded["wp:featuredmedia"][0].media_details.sizes.medium.source_url);
-        clone.querySelector('img').setAttribute('id', drawing.id);
+        if (Math.max(document.documentElement.clientWidth) > 1024) {
+            clone.querySelector('.image-articles').setAttribute('style', 'background-image:url(' + drawing._embedded["wp:featuredmedia"][0].media_details.sizes.medium.source_url + ')');
+        } else {
+            clone.querySelector('.image-articles').setAttribute('style', 'background-image:url(' + drawing._embedded["wp:featuredmedia"][0].media_details.sizes.medium_large.source_url + ')');
+        }
+        clone.querySelector('.image-articles').setAttribute('id', drawing.id);
 
         let Article = clone.querySelector('.article');
         Article.addEventListener('click', function () {
-            console.log(drawing.id);
+
             fetch("http://coffeandcoal.dk/nannajson/wp-json/wp/v2/artwork/" + drawing.id + "/?_embed").then(function (response) {
                 return response.json();
             }).then(function (modalJson) {
                 return showModal(modalJson);
+                return Nextmodal(modalJson);
             })
 
 
@@ -84,18 +75,55 @@ function showArtwork(drawings) {
 
         function showModal(singleevent) {
 
-            console.log(singleevent);
             Modal.classList.add('modal-show');
 
-            Modal.querySelector(".modal-image").setAttribute('src', singleevent._embedded["wp:featuredmedia"][0].media_details.sizes.medium.source_url);
+
+            Modal.querySelector(".modal-image").setAttribute('style', 'background-image:url(' + singleevent._embedded["wp:featuredmedia"][0].media_details.sizes.large.source_url + ')');
 
             Modal.classList.remove('hide');
-        }
+
+
+            RightArrow.addEventListener('click', NextModal);
+
+            var i = 0;
+            for (i; i < drawings.length; i++) {
+                if (singleevent.id == drawings[i].id) {
+                    indexvalue = i;
+
+
+                }
+
+            }
+
+            function NextModal() {
+
+                Modal.querySelector(".modal .modal-image").setAttribute('style', 'background-image:url(' + drawings[indexvalue + 1]._embedded["wp:featuredmedia"][0].media_details.sizes.large.source_url + ')');
+                console.log(indexvalue);
+            }
+
+
+
+
+        };
+
+
+
+
+
 
 
 
 
     });
+
+
+
+    function getArtworkByCategory(id) {
+        console.log('works')
+        fetch("http://coffeandcoal.dk/nannajson/wp-json/wp/v2/artwork?_embed&categories=" + id)
+            .then(res => res.json())
+            .then(showArtworkType);
+    }
 
 
     let Menu = document.querySelector('.menu-left');
@@ -120,7 +148,6 @@ function showArtwork(drawings) {
 
     };
 }
-
 
 
 getAllArtwork();
