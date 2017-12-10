@@ -7,12 +7,11 @@ let MenuItems = document.querySelectorAll("header a");
 let ImageLink = document.querySelector('.grid-section');
 BurgerMenuIcon.addEventListener('click', OpenMenu);
 let RightArrow = document.querySelector('.rightarrow');
+
 let Modal = document.querySelector('.modal');
 Modal.addEventListener('click', function () {
     Modal.classList.add('hide');
 });
-
-
 
 
 function OpenMenu() {
@@ -59,12 +58,10 @@ function showArtwork(drawings) {
             }).then(function (modalJson) {
                 return showModal(modalJson);
             })
-
-
         });
 
 
-        sectionGrid.appendChild(clone);
+    sectionGrid.appendChild(clone);
 
 
     function showModal(singleevent) {
@@ -86,18 +83,14 @@ function showArtwork(drawings) {
             function NextModal() {
 
                 i++;
+                /*/The value of an i which is an index of an array is increasing everytime the function is running so that you can get the next image/*/
 
                 Modal.querySelector(".modal .modal-image").setAttribute('style', 'background-image:url(' + drawings[i]._embedded["wp:featuredmedia"][0].media_details.sizes.large.source_url + ')');
 
+                console.log(i);
             }
-
-
-
-
         };
-
     });
-
 
 
     function getArtworkByCategory(id) {
@@ -106,7 +99,6 @@ function showArtwork(drawings) {
             .then(res => res.json())
             .then(showArtworkType);
     }
-
 
     let Menu = document.querySelector('.menu-left');
 
