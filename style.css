@@ -140,14 +140,13 @@ header {
 /*                                  Burger Menu Icon                    */
 
 .menu-icon-container {
-    width: 5.208333333333334VW;
+    width: 30px;
     display: flex;
     position: fixed;
     top: 3.125VW;
-    z-index: 25;
+    z-index: 50;
     height: 5.208333333333334VW;
     justify-content: center;
-    background-color: #22283A;
 }
 
 #nav-icon4 {
@@ -504,7 +503,7 @@ header {
             width: 5.208333333333334VW;
             background-color: none;
             display: flex;
-            z-index: 25;
+            z-index: 50;
             justify-content: center;
             align-content: center;
             background: none;
