@@ -7,7 +7,6 @@ let MenuItems = document.querySelectorAll("header a");
 let ImageLink = document.querySelector('.grid-section');
 BurgerMenuIcon.addEventListener('click', OpenMenu);
 let RightArrow = document.querySelector('.rightarrow');
-var indexvalue = 0;
 let Modal = document.querySelector('.modal');
 Modal.addEventListener('click', function () {
     Modal.classList.add('hide');
@@ -35,11 +34,7 @@ function getAllArtwork() {
     fetch("http://coffeandcoal.dk/nannajson/wp-json/wp/v2/artwork?_embed")
         .then(res => res.json())
         .then(showArtwork);
-
-
 }
-
-
 
 
 
@@ -63,7 +58,6 @@ function showArtwork(drawings) {
                 return response.json();
             }).then(function (modalJson) {
                 return showModal(modalJson);
-                return Nextmodal(modalJson);
             })
 
 
@@ -73,42 +67,34 @@ function showArtwork(drawings) {
         sectionGrid.appendChild(clone);
 
 
-        function showModal(singleevent) {
+    function showModal(singleevent) {
 
-            Modal.classList.add('modal-show');
+        Modal.classList.remove('hide');
+        Modal.classList.add('modal-show');
 
-
-            Modal.querySelector(".modal-image").setAttribute('style', 'background-image:url(' + singleevent._embedded["wp:featuredmedia"][0].media_details.sizes.large.source_url + ')');
-
-            Modal.classList.remove('hide');
+        Modal.querySelector(".modal-image").setAttribute('style', 'background-image:url(' + singleevent._embedded["wp:featuredmedia"][0].media_details.sizes.large.source_url + ')');
 
 
-            RightArrow.addEventListener('click', NextModal);
+        RightArrow.addEventListener('click', NextModal);
 
             for (i=0; i < drawings.length; i++) {
                 if (singleevent.id == drawings[i].id) {
-                    indexvalue = i;
+                    return i;
                 }
             }
 
             function NextModal() {
 
-                Modal.querySelector(".modal .modal-image").setAttribute('style', 'background-image:url(' + drawings[indexvalue + 1]._embedded["wp:featuredmedia"][0].media_details.sizes.large.source_url + ')');
-                console.log(indexvalue);
+                i++;
+
+                Modal.querySelector(".modal .modal-image").setAttribute('style', 'background-image:url(' + drawings[i]._embedded["wp:featuredmedia"][0].media_details.sizes.large.source_url + ')');
+
             }
 
 
 
 
         };
-
-
-
-
-
-
-
-
 
     });
 
