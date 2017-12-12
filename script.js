@@ -1,3 +1,5 @@
+/*              Calling all the Global Elements                 */
+
 var BurgerMenuIcon = document.querySelector(".burgermenu-icon");
 var SpanOne = document.querySelector("#nav-icon4 span:nth-child(1)");
 var SpanTwo = document.querySelector("#nav-icon4 span:nth-child(2)");
@@ -17,13 +19,12 @@ var NannaVallentin = document.querySelector(".nannavallentin path");
 
 
 
-
-
 function getArtworkByCategory() {
     fetch("http://coffeandcoal.dk/nannajson/wp-json/wp/v2/artwork?_embed&categories=" + categoryid)
         .then(res => res.json())
         .then(showArtworks);
 }
+
 
 function getProducts() {
     fetch("http://coffeandcoal.dk/nannajson/wp-json/wp/v2/shop?_embed")
@@ -32,7 +33,27 @@ function getProducts() {
 }
 
 
+
+
+
+/*              Only show SVG animation after page has loaded/ Stackoverflow: show content after page has loaded  */
+
+
+setTimeout(function() {
+  document.body.classList.add("loaded");
+document.querySelector('body .drawing defs style').textContent='.cls-1{fill:none;stroke:#233b75;stroke-linecap:round;stroke-linejoin:round;}';
+    document.querySelector('header').classList.add('loaded');
+}, 1000);
+
+
+
+
+/*                 Burger Menu Clicked and opened, the color of the elements is changing based on if the element itself is dark or light    */
+
 BurgerMenuIcon.addEventListener("click", OpenMenu);
+
+
+
 function OpenMenu() {
 
     MenuContainer.classList.toggle("appear");
@@ -53,38 +74,37 @@ function OpenMenu() {
 
 }
 
+/*                Shop Page to show all the products in the grid layout               */
 
 function showProducts(products) {
 
-    console.log(products);
     let sectionGrid = document.querySelector("#section-grid");
     let GridShopTemplate = document.querySelector("#shop-template").content;
-
-    products.forEach(function(product) {
+    products.forEach(function (product) {
         let cloneshop = GridShopTemplate.cloneNode(true);
-        cloneshop.querySelector(".shop-article .image-container .image-articles").setAttribute("style", "background-image:url(" + product._embedded["wp:featuredmedia"][0].media_details.sizes.medium.source_url + ")");
+        cloneshop.querySelector(".image-articles").setAttribute("style", "background-image:url(" + product._embedded["wp:featuredmedia"][0].media_details.sizes.medium.source_url + ")");
         cloneshop.querySelector(".product-title").textContent = product.acf.product_title;
         cloneshop.querySelector(".product-price").textContent = product.acf.price + "DKK";
         if (product.acf.sold_out == true) {
             cloneshop.querySelector(".sold-out").textContent = "Sold Out";
         }
-
         sectionGrid.appendChild(cloneshop);
 
 
-    })
+    });
 
+};
 
+/*                      Modal Opened and closed                                            */
 
-
-}
 let Modal = document.querySelector(".modal");
 Modal.addEventListener("click", ModalAdd);
 
 function ModalAdd() {
     Modal.classList.add("hide");
-    RightArrow.classList.add("hide")
+    RightArrow.classList.add("hide");
 };
+
 
 
 function showArtworks(drawings) {
@@ -205,7 +225,7 @@ let categoryid = searchParams.get("categoryid");
 
 if (shop) {
     getProducts();
-    ModalAdd();
+
 }
 if (categoryid) {
     getArtworkByCategory();
