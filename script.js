@@ -8,7 +8,7 @@ var MenuContainer = document.querySelector("header");
 var NavIndication = document.querySelector(".navindication");
 var MenuItems = document.querySelectorAll("header a");
 var ImageLink = document.querySelector(".grid-section");
-var RightArrow = document.querySelector(".rightarrow path");
+var RightArrow = document.querySelector(".rightarrow");
 var ArrowCont = document.querySelector(".rightarrow-cont");
 var MainContainer = document.querySelector(".main-grid-container");
 var LeftMenu = document.querySelector(".menu-left");
@@ -16,8 +16,15 @@ var Logo = document.querySelector(".burgermenu-logo path");
 var Facebook = document.querySelector(".facebook i");
 var Instagram = document.querySelector(".instagram i");
 var NannaVallentin = document.querySelector(".nannavallentin path");
+var searchParams = new URLSearchParams(window.location.search);
+var Pathname = window.location.pathname;
+var shop = searchParams.get("shop");
+var about = searchParams.get("about");
+var categoryid = searchParams.get("categoryid");
+var index= Pathname.search('index');
+var Modal = document.querySelector(".modal");
 
-
+/****************************************/
 
 function getArtworkByCategory() {
     fetch("http://coffeandcoal.dk/nannajson/wp-json/wp/v2/artwork?_embed&categories=" + categoryid)
@@ -35,27 +42,15 @@ function getProducts() {
 
 
 
-
-/*              Only show SVG animation after page has loaded/ Stackoverflow: show content after page has loaded  */
-
-
-setTimeout(function() {
-  document.body.classList.add("loaded");
-document.querySelector('body .drawing defs style').textContent='.cls-1{fill:none;stroke:#233b75;stroke-linecap:round;stroke-linejoin:round;}';
-    document.querySelector('header').classList.add('loaded');
-}, 1000);
-
-
-
-
-/*                 Burger Menu Clicked and opened, the color of the elements is changing based on if the element itself is dark or light    */
+/*     Event Listeners      */
 
 BurgerMenuIcon.addEventListener("click", OpenMenu);
 
+Modal.addEventListener("click", ModalAdd);
 
 
+/*                 Burger Menu Clicked and opened, the color of the elements is changing based on if the element itself is dark or light    */
 function OpenMenu() {
-
     MenuContainer.classList.toggle("appear");
     BurgerMenuIcon.classList.toggle("open");
     NavIndication.classList.toggle("fade");
@@ -96,21 +91,14 @@ function showProducts(products) {
 };
 
 /*                      Modal Opened and closed                                            */
-
-let Modal = document.querySelector(".modal");
-Modal.addEventListener("click", ModalAdd);
-
 function ModalAdd() {
     Modal.classList.add("hide");
     RightArrow.classList.add("hide");
 };
 
-
-
-function showArtworks(drawings) {
-
-
-/*/break the functions/*/
+/*                     Change the color based on the Category Id of that page                    */
+function ChangeColor(drawings){
+/*             If the user is on Projects site change the color to light                         */
     if (categoryid == 5) {
         NavIndication.textContent = "Projects";
         MainContainer.classList.add("light-bckg");
@@ -129,6 +117,7 @@ function showArtworks(drawings) {
         Instagram.classList.add("dark-color");
         });
     }
+    /*             If the user is on Characters or Sketches site change the color to Dark                         */
     if (categoryid == 4 || categoryid == 3) {
         MainContainer.classList.add("dark-bckg");
         LeftMenu.classList.add("dark-bckg");
@@ -145,22 +134,25 @@ function showArtworks(drawings) {
         NannaVallentin.classList.add("light-color");
 
         });
-        if (categoryid == 4) {
-            NavIndication.textContent = "Characters";
-        }
-        if (categoryid == 3) {
-            NavIndication.textContent = "Sketches";
-        }
-
-
     }
+     if (categoryid == 4) {
+         /*If the user is on Characters, then write on the Navigation Indicator where the user is*/
+            NavIndication.textContent = "Characters";
+    }
+    if (categoryid == 3) {
+            NavIndication.textContent = "Sketches";
+    }
+}
 
-
+    /*                      Show the artwork on the page                                */
+function showArtworks(drawings) {
     let sectionGrid = document.querySelector("#section-grid");
     let GridImageTemplate = document.querySelector("#grid-img-template").content;
 
+            /*                     For each drawing clone the grid-img-template                             */
     drawings.forEach(function(drawing) {
         let clone = GridImageTemplate.cloneNode(true);
+/*  If the users screen width is less than 1024 shop the higher quality image, since on mobile and tablet the grid is only a row               */
         if (Math.max(document.documentElement.clientWidth) > 1024) {
             clone.querySelector(".image-articles").setAttribute("style", "background-image:url(" + drawing._embedded["wp:featuredmedia"][0].media_details.sizes.medium.source_url + ")");
         } else {
@@ -169,6 +161,8 @@ function showArtworks(drawings) {
         clone.querySelector(".image-articles").setAttribute("id", drawing.id);
 
         let Article = clone.querySelector(".article");
+
+        /*                             Fetch the artwork specific to the id of the image                             */
         Article.addEventListener("click", function() {
 
             fetch("http://coffeandcoal.dk/nannajson/wp-json/wp/v2/artwork/" + drawing.id + "/?_embed").then(function(response) {
@@ -181,18 +175,15 @@ function showArtworks(drawings) {
 
         sectionGrid.appendChild(clone);
 
-
+    /*                  Modal appears for an artwork that is clicked                                    */
         function showModal(singleevent) {
-            console.log(singleevent)
             RightArrow.classList.remove("hide");
             Modal.classList.remove("hide");
             Modal.classList.add("modal-show");
             LeftMenu.classList.toggle("dark-bckg");
             Modal.querySelector(".modal-name").textContent = singleevent.acf.title;
             Modal.querySelector(".modal-description").textContent = singleevent.acf.description;
-
             Modal.querySelector(".modal-image").setAttribute("style", "background-image:url(" + singleevent._embedded["wp:featuredmedia"][0].media_details.sizes.large.source_url + ")");
-
             RightArrow.addEventListener("click", NextModal);
 
             for (i = 0; i < drawings.length; i++) {
@@ -215,19 +206,28 @@ function showArtworks(drawings) {
 
     let Menu = document.querySelector(".menu-left");
 }
+/*              Only show SVG animation after page has loaded/ Stackoverflow: show content after page has loaded, add a time delay  */
 
-let searchParams = new URLSearchParams(window.location.search);
+function Loading(){
+setTimeout(function() {
+  document.body.classList.add("loaded");
+document.querySelector('body .drawing defs style').textContent='.cls-1{fill:none;stroke:#233b75;stroke-linecap:round;stroke-linejoin:round;}';
+    document.querySelector('header').classList.add('loaded');
+}, 1000)};
 
+/*                                Run certain functions for specific webpages                                  */
 
-let shop = searchParams.get("shop");
-let about = searchParams.get("about");
-let categoryid = searchParams.get("categoryid");
-
+/* if the URL of the Website contains the word index do the function specific for the page*/
+if (index == 1){
+    Loading();
+}
+/* if the URL of the Website contains the word shop do the function specific for the page*/
 if (shop) {
     getProducts();
-
 }
-if (categoryid) {
+/* if the URL of the Website contains the word categoryid do the function specific for the page/s*/
+ if(categoryid) {
     getArtworkByCategory();
     ModalAdd();
+    ChangeColor();
 }
