@@ -21,8 +21,7 @@ var Pathname = window.location.pathname;
 var shop = searchParams.get("shop");
 var about = searchParams.get("about");
 var categoryid = searchParams.get("categoryid");
-var index= Pathname.search('NannaVallentin/index');
-console.log(window.location.pathname);
+var index= Pathname.search('index');
 var Modal = document.querySelector(".modal");
 
 /****************************************/
@@ -202,9 +201,8 @@ function showArtworks(drawings) {
                 /*The value of an i which is an index of an array is increasing everytime the function is running so that you can get the next image*/
 
                 Modal.querySelector(".modal .modal-image").setAttribute("style", "background-image:url(" + drawings[i]._embedded["wp:featuredmedia"][0].media_details.sizes.large.source_url + ")");
-              Modal.querySelector(".modal .modal-name").textContent=drawings[i].acf.title;
-              Modal.querySelector(".modal .modal-description").textContent=drawings[i].acf.description;
 
+                console.log(i);
             }
         };
     });
@@ -215,8 +213,8 @@ function showArtworks(drawings) {
 
 function Loading(){
 setTimeout(function() {
-    console.log('workin')
-    document.querySelector('body .drawing defs style').textContent='.cls-1{fill:none;stroke:#233b75;stroke-linecap:round;stroke-linejoin:round;}';
+  document.body.classList.add("loaded");
+document.querySelector('body .drawing defs style').textContent='.cls-1{fill:none;stroke:#233b75;stroke-linecap:round;stroke-linejoin:round;}';
     document.querySelector('header').classList.add('loaded');
 }, 1000)};
 
