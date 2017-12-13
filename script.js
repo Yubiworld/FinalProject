@@ -101,6 +101,7 @@ function ChangeColor(drawings){
 /*             If the user is on Projects site change the color to light                         */
     if (categoryid == 5) {
         NavIndication.textContent = "Projects";
+         document.querySelector('title').textContent="Projects";
         MainContainer.classList.add("light-bckg");
         LeftMenu.classList.add("light-bckg");
         NavIndication.classList.add("dark-color");
@@ -138,9 +139,11 @@ function ChangeColor(drawings){
      if (categoryid == 4) {
          /*If the user is on Characters, then write on the Navigation Indicator where the user is*/
             NavIndication.textContent = "Characters";
+            document.querySelector('title').textContent="Characters";
     }
     if (categoryid == 3) {
             NavIndication.textContent = "Sketches";
+          document.querySelector('title').textContent="Sketches";
     }
 }
 
