@@ -21,7 +21,8 @@ var Pathname = window.location.pathname;
 var shop = searchParams.get("shop");
 var about = searchParams.get("about");
 var categoryid = searchParams.get("categoryid");
-var index= Pathname.search('index');
+var index= Pathname.search('NannaVallentin/index');
+console.log(window.location.pathname);
 var Modal = document.querySelector(".modal");
 
 /****************************************/
@@ -101,6 +102,7 @@ function ChangeColor(drawings){
 /*             If the user is on Projects site change the color to light                         */
     if (categoryid == 5) {
         NavIndication.textContent = "Projects";
+         document.querySelector('title').textContent="Projects";
         MainContainer.classList.add("light-bckg");
         LeftMenu.classList.add("light-bckg");
         NavIndication.classList.add("dark-color");
@@ -138,9 +140,11 @@ function ChangeColor(drawings){
      if (categoryid == 4) {
          /*If the user is on Characters, then write on the Navigation Indicator where the user is*/
             NavIndication.textContent = "Characters";
+            document.querySelector('title').textContent="Characters";
     }
     if (categoryid == 3) {
             NavIndication.textContent = "Sketches";
+          document.querySelector('title').textContent="Sketches";
     }
 }
 
@@ -198,8 +202,9 @@ function showArtworks(drawings) {
                 /*The value of an i which is an index of an array is increasing everytime the function is running so that you can get the next image*/
 
                 Modal.querySelector(".modal .modal-image").setAttribute("style", "background-image:url(" + drawings[i]._embedded["wp:featuredmedia"][0].media_details.sizes.large.source_url + ")");
+              Modal.querySelector(".modal .modal-name").textContent=drawings[i].acf.title;
+              Modal.querySelector(".modal .modal-description").textContent=drawings[i].acf.description;
 
-                console.log(i);
             }
         };
     });
@@ -210,8 +215,8 @@ function showArtworks(drawings) {
 
 function Loading(){
 setTimeout(function() {
-  document.body.classList.add("loaded");
-document.querySelector('body .drawing defs style').textContent='.cls-1{fill:none;stroke:#233b75;stroke-linecap:round;stroke-linejoin:round;}';
+    console.log('workin')
+    document.querySelector('body .drawing defs style').textContent='.cls-1{fill:none;stroke:#233b75;stroke-linecap:round;stroke-linejoin:round;}';
     document.querySelector('header').classList.add('loaded');
 }, 1000)};
 
