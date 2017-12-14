@@ -46,7 +46,7 @@ function getProducts() {
 
 
 /*                 Burger Menu Clicked and opened, the color of the elements is changing based on if the element itself is dark or light    */
-var BurgerMenuIcon = document.querySelector(".menu-icon-container");
+var BurgerMenuIcon = document.querySelector(".menu-icon-container .burgermenu-icon");
 BurgerMenuIcon.addEventListener("click", OpenMenu);
 
 function OpenMenu() {
@@ -62,7 +62,7 @@ function OpenMenu() {
     SpanThree.classList.toggle("light-bckg");
     let MenuItems = document.querySelectorAll("header a");
     MenuItems.forEach(function(menus) {
-        menus.classList.toggle("fade");
+    menus.classList.toggle("fade");
 
     });
 
