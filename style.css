@@ -592,11 +592,10 @@ h1 {
         height: 100vh;
         position: absolute;
         top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        left: 50%;
         margin: auto;
         display: block;
+        transform: translate(-50%);
     }
     .homepage-nanna {
         z-index: 20;
@@ -615,11 +614,13 @@ h1 {
         fill-opacity: 0;
         stroke-width: 1;
         stroke-dasharray: 165.39584350585938;
-        stroke-dashoffset: 165.39584350585938;
-        animation: draw 3s ease-in-out;
+        stroke-dashoffset: 180;
+        animation: draw 4s ease-in-out;
         animation-iteration-count: 1;
-        animation-delay: 100ms;
         animation-fill-mode: forwards;
+    }
+    .drawing svg{
+        height: 100vh;
     }
     @keyframes draw {
         to {
