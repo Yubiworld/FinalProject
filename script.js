@@ -1,6 +1,4 @@
 /*              Calling all the Global Elements                 */
-
-var BurgerMenuIcon = document.querySelector(".burgermenu-icon");
 var SpanOne = document.querySelector("#nav-icon4 span:nth-child(1)");
 var SpanTwo = document.querySelector("#nav-icon4 span:nth-child(2)");
 var SpanThree = document.querySelector("#nav-icon4 span:nth-child(3)");
@@ -44,12 +42,13 @@ function getProducts() {
 
 /*     Event Listeners      */
 
-BurgerMenuIcon.addEventListener("click", OpenMenu);
 
-Modal.addEventListener("click", ModalAdd);
 
 
 /*                 Burger Menu Clicked and opened, the color of the elements is changing based on if the element itself is dark or light    */
+var BurgerMenuIcon = document.querySelector(".menu-icon-container");
+BurgerMenuIcon.addEventListener("click", OpenMenu);
+
 function OpenMenu() {
     MenuContainer.classList.toggle("appear");
     BurgerMenuIcon.classList.toggle("open");
@@ -91,6 +90,7 @@ function showProducts(products) {
 };
 
 /*                      Modal Opened and closed                                            */
+Modal.addEventListener("click", ModalAdd);
 function ModalAdd() {
     Modal.classList.add("hide");
     RightArrow.classList.add("hide");
