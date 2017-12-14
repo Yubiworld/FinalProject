@@ -189,6 +189,8 @@ function showArtworks(drawings) {
             Modal.querySelector(".modal-image").setAttribute("style", "background-image:url(" + singleevent._embedded["wp:featuredmedia"][0].media_details.sizes.large.source_url + ")");
             RightArrow.addEventListener("click", NextModal);
 
+            /*      Get the id of the Artwork that the modal is on right now     */
+
             for (i = 0; i < drawings.length; i++) {
                 if (singleevent.id == drawings[i].id) {
                     return i;
@@ -201,8 +203,8 @@ function showArtworks(drawings) {
                 /*The value of an i which is an index of an array is increasing everytime the function is running so that you can get the next image*/
 
                 Modal.querySelector(".modal .modal-image").setAttribute("style", "background-image:url(" + drawings[i]._embedded["wp:featuredmedia"][0].media_details.sizes.large.source_url + ")");
-
-                console.log(i);
+                Modal.querySelector(".modal-name").textContent = drawings[i].acf.title;
+            Modal.querySelector(".modal-description").textContent = drawings[i].acf.description;
             }
         };
     });

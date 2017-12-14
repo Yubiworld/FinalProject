@@ -588,8 +588,8 @@ h1 {
     /*                                       HOME PAGE DESKTOP*/
 
     .drawing {
-        max-width: 100vw;
-        max-height: 100%;
+        max-width: 100%;
+        height: 100vh;
         position: absolute;
         top: 0;
         left: 0;
@@ -616,7 +616,7 @@ h1 {
         stroke-width: 1;
         stroke-dasharray: 165.39584350585938;
         stroke-dashoffset: 165.39584350585938;
-        animation: draw 5s ease-in-out;
+        animation: draw 3s ease-in-out;
         animation-iteration-count: 1;
         animation-delay: 100ms;
         animation-fill-mode: forwards;
